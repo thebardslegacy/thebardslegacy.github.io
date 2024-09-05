@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Bard's Legacy - Day 1</title>
+    <title>The Bard's Legacy</title>
     <link rel="icon" href="/icons/BGicon.png">
     <style>
         @font-face {
@@ -11,9 +11,15 @@
             src: url('fonts/Zapfino.ttf') format('truetype');
         }
         
+        @font-face {
+            font-family: 'American Typewriter';
+            src: url('fonts/AmericanTypewriter.ttf') format('truetype');
+        }
+        
         body {
             background-color: rgb(45, 70, 119);
             font-family: 'Andika', sans-serif;
+            /* font-family: 'Helvetica Neue', Arial, sans-serif; */
             color: #ffffff;
             margin: 0;
             padding: 20px;
@@ -26,7 +32,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgb(45, 70, 119), rgb(9, 32, 79));
+            background: linear-gradient(135deg, rgb(107, 140, 206), rgb(51, 108, 156));
             opacity: 0.8;
             z-index: -2;
         }
@@ -37,8 +43,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 70%, #303f6c 0%, transparent 50%),
-                        radial-gradient(circle at 70% 30%, #236693 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 70%, #a1abca 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, #dfe2c5 0%, transparent 50%);
             mix-blend-mode: overlay;
             opacity: 0.5;
             z-index: -1;
@@ -68,19 +74,25 @@
             }
         }
 
-        .logocontainer {
-            position: relative;
-            min-height: 10vh;
-            padding-bottom: 50px;
-        }
+        @keyframes scrollBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% -200%;
+    }
+}
 
-        .logo {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 25vh;
-            height: auto;
-            z-index: 10; 
+        .notes-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/notes_pattern.png');
+            background-repeat: repeat;
+            opacity: 0.045;
+            animation: scrollBackground 25s linear infinite;
         }
 
         .Subtitle {
@@ -88,6 +100,53 @@
             color: white;
             margin-top: -0.7em;
             font-size: 40px;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 45%; /* Changed from 40% to 45% */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .logo-container img {
+            max-width: 110%;
+            max-height: 110%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .polaroid-fan {
+            position: absolute;
+            width: 220px;
+            max-width: 90%;
+            background-color: white;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-out;
+            transform-origin: center bottom;
+            z-index: 1;
+        }
+
+
+        .polaroid-fan img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .polaroid-fan {
+                width: 150px;
+                padding: 8px 8px 24px 8px;
+            }
         }
 
         .hamburger-menu {
@@ -208,43 +267,131 @@
             letter-spacing: 2px;
         }
        
-        /* Add CSS for MP3 download */
-        .audio-container {
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 2rem;
+/* Add CSS here */
+
+
+.cloud {
+        position: fixed;
+        opacity: 0.3;
+        z-index: -1;
+        width: 25vw; /* Increased from previous value */
+    }
+
+    @media (orientation: landscape) {
+        .cloud {
+            width: 25vh; /* Increased from previous value */
+        }
+    }
+
+    .polaroid-container {
+        position: absolute;
+        top: 45%; /* Changed from 40% to 45% */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 30vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 0;
+    }
+
+    @media (orientation: landscape) {
+        .polaroid-container {
+            height: 40vw;
+            max-height: 25vh;
         }
 
-        .audio-player {
-            width: 100%;
+        .polaroid-fan {
+            width: 18vw;
+            max-width: 200px;
+            padding: 10px 10px 30px 10px;
+        }
+    }
+
+    .content-wrapper {
+        position: relative;
+        min-height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .central-content {
+        position: relative;
+        width: 100%;
+        height: 70vh;
+        margin-bottom: 20px;
+    }
+
+    .text-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .text-content {
+        max-width: 600px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.3); /* Changed opacity to 30% */
+        color: black; /* Changed text color to black */
+        border-radius: 10px;
+        margin: 10px 0;
+        z-index: 1;
+    }
+
+    .text-content h2 {
+        margin-top: 0; /* Removed space before headings */
+        font-weight: normal; /* Unbold headings */
+    }
+
+    @media (min-width: 1201px) {
+        .text-container {
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .text-content {
+            flex: 1;
             max-width: 400px;
-            margin-top: 1rem;
+            margin: 0 10px;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .central-content {
+            height: 60vh;
+        }
+    }
+
+    @media (orientation: landscape) {
+        .logo-container, .polaroid-container {
+            top: 55%; /* Lowered from 45% to 55% */
         }
 
-        .download-btn {
-            display: inline-block;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
+        .polaroid-fan {
+            width: 16vw; /* Slightly smaller, was 18vw */
+            max-width: 180px; /* Reduced from 200px */
         }
+    }
 
-        .download-btn:hover {
-            background-color: #45a049;
-        }
+    h1, h2 {
+        font-family: 'American Typewriter', serif;
+    }
+
     </style>
 </head>
 <body>
     <div class="background"></div>
     <div class="overlay"></div>
     <div class="overlay2"></div>
+    <div class="notes-background"></div>
+    
 
     <div class="hamburger-menu">
         <button class="menu-toggle" onclick="toggleMenu()">
@@ -253,7 +400,7 @@
             <span></span>
         </button>
         <div class="menu-items" id="menu-items">
-            <div class="menu-title">The Bard’s Legacy <p>Summer 2025</p></div>
+            <div class="menu-title">The Bard's Legacy <p>Summer 2025</p></div>
             <a href="#">Home</a>
             <a href="#">About the tour</a>
             <a href="#">Day 1</a>
@@ -267,37 +414,157 @@
         </div>
     </div>
 
-    <h1 class="Title">The Bard’s Legacy</h1>
-    <h1 class="Subtitle">Day 1</h1>
+<!--   <h1 class="Title">The Bard's Legacy</h1> 
+    <h1 class="Subtitle">Shakespeare Through the Ages</h1>
+--> 
 
 
-    <div class="container">
-        <div class="audio-container">
-            <h2>Edward Elgar - Enigma Variations, Op.36: IX. (Nimrod)</h2>
-            <p>Today's tour will utilize the following audio as a part of our lessons and tour:</p>
-            <audio id="audioPlayer" class="audio-player" controls>
-                <source src="mp3s/Edward Elgar Enigma Variations Op36 IX Nimrod.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-            <br>
-            <a href="mp3s/Edward Elgar Enigma Variations Op36 IX Nimrod.mp3" download class="download-btn">Download MP3</a>
+    <div class="content-wrapper">
+        <div class="central-content">
+            <div class="polaroid-container">
+                <div class="polaroid-fan" id="shakespeare">
+                    <img src="images/Shakespeare.jpg" alt="Shakespeare Portrait">
+                </div>
+                <div class="polaroid-fan" id="royal-opera-house">
+                    <img src="images/RoyalOperaHouse.jpg" alt="Royal Opera House">
+                </div>
+                <div class="polaroid-fan" id="st-pauls">
+                    <img src="images/StPauls.jpg" alt="St Paul's Cathedral">
+                </div>
+                <div class="polaroid-fan" id="stratford">
+                    <img src="images/Stratford-Upon-Avon.jpg" alt="Stratford-Upon-Avon">
+                </div>
+                <div class="polaroid-fan" id="the-globe">
+                    <img src="images/TheGlobe.jpg" alt="The Globe Theatre">
+                </div>
+            </div>
+            <div class="logo-container">
+                <img src="images/Bard's Legacy Logo.png" alt="The Bard's Legacy Logo">
+            </div>
+        </div>
+
+        <div class="text-container">
+            <div class="text-content left-content">
+                <h2>Shakespeare's London: A Literary Adventure</h2>
+                <p>Join us for an unforgettable educational journey to London in the summer of 2025. This unique trip offers students the opportunity to immerse themselves in the world of William Shakespeare and explore his profound impact on literature, drama, and music.</p>
+                <p>Walk in the footsteps of the Bard himself as we visit historical sites, attend performances, and engage in interactive workshops. From the reconstructed Globe Theatre to the bustling streets of modern London, students will gain a deep appreciation for Shakespeare's enduring legacy.</p>
+                <p>This trip is designed to bring Shakespeare's works to life, offering a perfect blend of academic enrichment and cultural exploration. Don't miss this chance to experience the magic of Shakespeare in the very city where his genius flourished!</p>
+            </div>
+
+            <div class="text-content right-content">
+                <h2>Key Destinations</h2>
+                <ul>
+                    <li>Shakespeare's Globe Theatre</li>
+                    <li>Stratford-upon-Avon (Shakespeare's birthplace)</li>
+                    <li>The Royal Shakespeare Company</li>
+                    <li>The British Library (to view original manuscripts)</li>
+                    <li>Westminster Abbey (Poets' Corner)</li>
+                    <li>The National Theatre</li>
+                    <li>The Victoria and Albert Museum</li>
+                    <li>A West End performance of a Shakespeare play</li>
+                </ul>
+            </div>
         </div>
     </div>
 
 
-    <div class="logocontainer">        
-        <img src="BASIS logo/Full Logo White on Transparent.png" alt="BASIS Logo" class="logo">
-    </div>
     
     <script>
+    // Add Javascript here
+    function createClouds() {
+        const cloudContainer = document.createElement('div');
+        cloudContainer.className = 'cloud-container';
+        document.body.appendChild(cloudContainer);
+
+        const isPortrait = window.innerHeight > window.innerWidth;
+        const minSizePercent = isPortrait ? 20 : 15; // Increased from 15 and 10
+        const maxSizePercent = isPortrait ? 30 : 25; // Increased from 25 and 20
+
+        for (let i = 1; i <= 10; i++) {
+            const cloud = document.createElement('img');
+            cloud.src = `images/cloud_${i}.png`;
+            cloud.className = 'cloud';
+            
+            // Calculate cloud size as percentage of screen space
+            const sizePercent = Math.random() * (maxSizePercent - minSizePercent) + minSizePercent;
+            
+            // Use the smaller dimension (width or height) to set the cloud size
+            const sizeDimension = isPortrait ? 'vw' : 'vh';
+            cloud.style.width = `${sizePercent}${sizeDimension}`;
+            
+            // Position clouds mostly around the edges
+            let x, y;
+            if (Math.random() < 0.7) { // 70% chance to be on the edge
+                x = Math.random() < 0.5 ? Math.random() * 20 : 80 + Math.random() * 20;
+                y = Math.random() * 100;
+            } else {
+                x = Math.random() * 100;
+                y = Math.random() < 0.5 ? Math.random() * 20 : 80 + Math.random() * 20;
+            }
+            
+            cloud.style.left = `${x}vw`;
+            cloud.style.top = `${y}vh`;
+            
+            // Add animation
+            const duration = Math.random() * 20 + 30; // Random duration between 30-50s
+            cloud.style.animation = `floatCloud ${duration}s infinite ease-in-out`;
+            
+            cloudContainer.appendChild(cloud);
+        }
+    }
+
+    // Call createClouds on load and resize
+    window.addEventListener('load', createClouds);
+    window.addEventListener('resize', () => {
+        // Remove existing clouds
+        const existingContainer = document.querySelector('.cloud-container');
+        if (existingContainer) {
+            existingContainer.remove();
+        }
+        // Create new clouds
+        createClouds();
+    });
+
+    function animatePolaroids() {
+        const polaroids = [
+             { id: 'shakespeare', angle: 0, zIndex: 5, offsetX: 85 , offsetY: -55, scale: 0.9 },
+            { id: 'royal-opera-house', angle: -40, zIndex: 4, offsetX: -10, offsetY: 10 },
+            { id: 'st-pauls', angle: -10, zIndex: 3, offsetX: 220, offsetY: 230, scale: 1.1 },
+            { id: 'stratford', angle: 15, zIndex: 2, offsetX: 200, offsetY: 50 },
+            { id: 'the-globe', angle: 20, zIndex: 1, offsetX: -20, offsetY: 220 },
+        ];
+
+        polaroids.forEach(({ id, angle, zIndex, offsetX, offsetY, scale }, index) => {
+            const polaroid = document.getElementById(id);
+            
+            // Set initial stacked position
+            polaroid.style.transform = 'translate(-0%, -60%) rotate(0deg)';
+            polaroid.style.zIndex = zIndex;
+
+            // Animate to final position
+            setTimeout(() => {
+                polaroid.style.transform = `
+                    translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))
+                    rotate(${angle}deg)
+                    ${scale ? `scale(${scale})` : ''}
+                `;
+            }, 100 * index);
+        });
+    }
+
+    window.addEventListener('load', createClouds);
+    window.addEventListener('load', animatePolaroids);
+    window.addEventListener('resize', animatePolaroids);
+
+
     // Hamburger menu functionality
     const menuToggle = document.querySelector('.menu-toggle');
     const menuItems = document.querySelector('.menu-items');
     
-    function toggleMenu() {
+    menuToggle.addEventListener('click', () => {
         menuToggle.classList.toggle('open');
         menuItems.classList.toggle('show');
-    }
+    });
     
     // Close the menu when clicking outside
     document.addEventListener('click', (event) => {
@@ -307,6 +574,9 @@
             menuItems.classList.remove('show');
         }
     });
-    </script>
+
+    window.addEventListener('load', createClouds);
+</script>
+
 </body>
 </html>
