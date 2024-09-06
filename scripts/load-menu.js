@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Load CSS
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://thebardslegacy.github.io/styles/main.css';
+    document.head.appendChild(link);
+
+    // Load menu
     fetch('https://thebardslegacy.github.io/menu.html')
         .then(response => response.text())
         .then(html => {
