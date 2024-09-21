@@ -1,0 +1,172 @@
+.hamburger-menu {
+    position: absolute;
+    margin-left: 7px;
+    top: 20px;
+    left: 13px;
+    z-index: 1000;
+}
+
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 20;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 3px;
+    background: white;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
+.menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.menu-items {
+    position: absolute;
+    top: 25px;
+    left: -250px;
+    background: linear-gradient(135deg, rgba(48, 67, 104, 0.8), rgba(20, 31, 53, 0.8));
+    width: 250px;
+    height: 90vh;
+    padding-top: 20px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    overflow-y: auto;
+}
+
+.menu-items.show {
+    left: 0;
+    opacity: 1;
+}
+
+.menu-items a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.menu-items.show a {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.menu-items a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-items a:nth-child(1) { transition-delay: 0.1s; }
+.menu-items a:nth-child(2) { transition-delay: 0.2s; }
+.menu-items a:nth-child(3) { transition-delay: 0.3s; }
+.menu-items a:nth-child(4) { transition-delay: 0.4s; }
+.menu-items a:nth-child(5) { transition-delay: 0.5s; }
+.menu-items a:nth-child(6) { transition-delay: 0.6s; }
+.menu-items a:nth-child(7) { transition-delay: 0.7s; }
+.menu-items a:nth-child(8) { transition-delay: 0.8s; }
+.menu-items a:nth-child(9) { transition-delay: 0.9s; }
+.menu-items a:nth-child(10) { transition-delay: 1.0s; } 
+
+.menu-title {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.menu-footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+}
+
+h1, h2 {
+    font-family: 'American Typewriter', serif;
+}
+
+.submenu-toggle {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
+.submenu-toggle.open {
+    transform: rotate(90deg); /* Rotate 90 degrees when open */
+}
+
+.submenu-parent {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submenu-parent:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.submenu-parent:hover .submenu-text,
+.submenu-parent:hover .submenu-toggle {
+    background-color: transparent;
+}
+.submenu-parent:hover .submenu-text,
+.submenu-parent:hover .submenu-toggle {
+    font-size: 98%;
+}
+
+.submenu-toggle {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    font-size: 0.8em;
+    margin-right: 10px;
+    padding: 10px 0; /* Added padding to increase clickable area */
+}
+
+.submenu-text {
+    flex-grow: 1;
+    text-align: left;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    padding: 10px 0; /* Added padding to increase clickable area */
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu.show {
+    display: block;
+}
+
+.submenu a {
+    padding: 8px 20px; /* Reduced padding from 10px to 8px */
+}
