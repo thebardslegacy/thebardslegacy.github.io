@@ -1,39 +1,224 @@
-<div class="hamburger-menu">
-    <button class="menu-toggle" onclick="toggleMenu()">
+<!-- menu.html -->
+<style>
+    .menu-container {
+        position: fixed;
+        top: 0px;
+        left: 5px;
+        z-index: 1000;
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 20px;
+        z-index: 1001;
+    }
+
+    .menu-toggle span {
+        width: 30px;
+        height: 3px;
+        background: white;
+        border-radius: 10px;
+        transition: all 0.3s linear;
+        transform-origin: 1px;
+    }
+
+    .menu-toggle.open span:nth-child(1) {
+        transform: rotate(40deg);
+    }
+
+    .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.open span:nth-child(3) {
+        transform: rotate(-40deg);
+    }
+
+    .menu-content {
+        position: fixed;
+        left: -250px;
+        margin-top: 0px;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.196), rgba(0, 0, 0, 0.309));
+        width: 250px;
+        height: 70vh;
+        padding-top: 60px;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        overflow-y: auto;
+    }
+
+    .menu-content.show {
+        left: 0;
+        opacity: 1;
+    }
+
+    .group {
+        margin-top: 10px;
+    }
+
+    .group-title {
+        cursor: pointer;
+        padding: 10px 20px;
+        color: white;
+        transition: background-color 0.2s;
+        display: flex;
+        align-items: center;
+    }
+
+    .group-title:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .group-title::before {
+        content: '▶';
+        display: inline-block;
+        margin-right: 10px;
+        transition: transform 0.3s ease;
+        font-size: 0.8em;
+    }
+
+    .group-title.open::before {
+        transform: rotate(90deg);
+    }
+
+    .group-items {
+        display: none;
+        padding-left: 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .group-items.show {
+        display: block;
+        max-height: 500px;
+    }
+
+    .group-items a, .contact-link {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 8px 20px;
+        transition: background-color 0.2s;
+    }
+
+    .group-items a:hover, .contact-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-title {
+        text-align: center;
+        color: white;
+        margin-left: -15px;
+        margin-top:-35px;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .menu-footer {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 12px;
+    }
+</style>
+
+<div class="menu-container">
+    <div class="menu-toggle" onclick="toggleMenu()">
         <span></span>
         <span></span>
         <span></span>
-    </button>
-    <div class="menu-items" id="menu-items">
-        <a href="https://thebardslegacy.github.io/">Home</a>
-        <div class="submenu-parent">
-            <span class="submenu-toggle">▶</span>
-            <a href="#" class="submenu-text">Week 1</a>
+    </div>
+    <div class="menu-content" id="menuContent">
+        <div class="menu-title">The Bard's Legacy</div>
+        <div class="group">
+            <div class="group-title" onclick="toggleGroup('group1')">Week 1</div>
+            <div class="group-items" id="group1">
+                <a href="https://thebardslegacy.github.io/day1">Day 1</a>
+                <a href="https://thebardslegacy.github.io/day2">Day 2</a>
+                <a href="https://thebardslegacy.github.io/day3">Day 3</a>
+                <a href="https://thebardslegacy.github.io/day4">Day 4</a>
+                <a href="https://thebardslegacy.github.io/day5">Day 5</a>
+                <a href="https://thebardslegacy.github.io/day6">Day 6</a>
+                <a href="https://thebardslegacy.github.io/day7">Day 7</a>
+            </div>
         </div>
-        <div class="submenu">
-            <a href="https://thebardslegacy.github.io/day1">Day 1</a>
-            <a href="https://thebardslegacy.github.io/day2">Day 2</a>
-            <a href="https://thebardslegacy.github.io/day3">Day 3</a>
-            <a href="https://thebardslegacy.github.io/day4">Day 4</a>
-            <a href="https://thebardslegacy.github.io/day5">Day 5</a>
-            <a href="https://thebardslegacy.github.io/day6">Day 6</a>
-            <a href="https://thebardslegacy.github.io/day7">Day 7</a>
+        <div class="group">
+            <div class="group-title" onclick="toggleGroup('group2')">Week 2</div>
+            <div class="group-items" id="group2">
+                <a href="https://thebardslegacy.github.io/day8">Day 8</a>
+                <a href="https://thebardslegacy.github.io/day9">Day 9</a>
+                <a href="https://thebardslegacy.github.io/day10">Day 10</a>
+                <a href="https://thebardslegacy.github.io/day11">Day 11</a>
+                <a href="https://thebardslegacy.github.io/day12">Day 12</a>
+                <a href="https://thebardslegacy.github.io/day13">Day 13</a>
+                <a href="https://thebardslegacy.github.io/day14">Day 14</a>
+            </div>
         </div>
-        <div class="submenu-parent">
-            <span class="submenu-toggle">▶</span>
-            <a href="#" class="submenu-text">Week 2</a>
-        </div>
-        <div class="submenu">
-            <a href="https://thebardslegacy.github.io/day8">Day 8</a>
-            <a href="https://thebardslegacy.github.io/day9">Day 9</a>
-            <a href="https://thebardslegacy.github.io/day10">Day 10</a>
-            <a href="https://thebardslegacy.github.io/day11">Day 11</a>
-            <a href="https://thebardslegacy.github.io/day12">Day 12</a>
-            <a href="https://thebardslegacy.github.io/day13">Day 13</a>
-            <a href="https://thebardslegacy.github.io/day14">Day 14</a>
-        </div>
-        <a href="mailto:garrison.tubbs-biph@basischina.com">Contact</a>
-        
-        <div class="menu-footer">© Garrison Tubbs 2025</div>
+        <a href="mailto:garrison.tubbs-biph@basischina.com" class="contact-link">Contact</a>
+        <div class="menu-footer">© Garrison Tubbs 2024</div>
     </div>
 </div>
+
+<script>
+    let menuOpen = false;
+    let openGroup = null;
+
+    function toggleMenu() {
+        const menuContent = document.getElementById('menuContent');
+        const menuToggle = document.querySelector('.menu-toggle');
+        menuOpen = !menuOpen;
+        
+        if (menuOpen) {
+            menuContent.classList.add('show');
+            menuToggle.classList.add('open');
+        } else {
+            menuContent.classList.remove('show');
+            menuToggle.classList.remove('open');
+            closeAllGroups();
+        }
+    }
+
+    function toggleGroup(groupId) {
+        const group = document.getElementById(groupId);
+        const groupTitle = group.previousElementSibling;
+
+        if (openGroup && openGroup !== group) {
+            openGroup.classList.remove('show');
+            openGroup.previousElementSibling.classList.remove('open');
+        }
+
+        group.classList.toggle('show');
+        groupTitle.classList.toggle('open');
+
+        openGroup = group.classList.contains('show') ? group : null;
+    }
+
+    function closeAllGroups() {
+        const groups = document.querySelectorAll('.group-items');
+        const groupTitles = document.querySelectorAll('.group-title');
+        
+        groups.forEach(group => group.classList.remove('show'));
+        groupTitles.forEach(title => title.classList.remove('open'));
+        
+        openGroup = null;
+    }
+
+    document.addEventListener('click', function(event) {
+        const menuContainer = document.querySelector('.menu-container');
+        if (!menuContainer.contains(event.target) && menuOpen) {
+            toggleMenu();
+        }
+    });
+
+    
+</script>

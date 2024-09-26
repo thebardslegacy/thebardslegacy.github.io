@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Bard's Legacy</title>
+    <title>The Bard's Legacy: Shakespeare Through the Ages</title>
     <link rel="icon" href="/icons/Shakespeareicon.png">
     <link rel="stylesheet" href="styles/menu.css">
     <style>
@@ -284,64 +284,119 @@
     <div class="notes-background"></div>
     
 
-    <div id="menu"></div>
+    <div id="menu"></div> <!-- Placeholder for the menu -->
 
-<!--   <h1 class="Title">The Bard's Legacy</h1> 
-<h1 class="Subtitle">Shakespeare Through the Ages</h1>
---> 
-
-
-<div class="content-wrapper">
-    <div class="central-content">
-        <div class="polaroid-container">
-            <div class="polaroid-fan" id="shakespeare">
-                <img src="images/Shakespeare.jpg" alt="Shakespeare Portrait">
+    <div class="content-wrapper">
+        <div class="central-content">
+            <div class="polaroid-container">
+                <div class="polaroid-fan" id="shakespeare">
+                    <img src="images/Shakespeare.jpg" alt="Shakespeare Portrait">
+                </div>
+                <div class="polaroid-fan" id="royal-opera-house">
+                    <img src="images/RoyalOperaHouse.jpg" alt="Royal Opera House">
+                </div>
+                <div class="polaroid-fan" id="st-pauls">
+                    <img src="images/StPauls.jpg" alt="St Paul's Cathedral">
+                </div>
+                <div class="polaroid-fan" id="stratford">
+                    <img src="images/Stratford-Upon-Avon.jpg" alt="Stratford-Upon-Avon">
+                </div>
+                <div class="polaroid-fan" id="the-globe">
+                    <img src="images/TheGlobe.jpg" alt="The Globe Theatre">
+                </div>
             </div>
-            <div class="polaroid-fan" id="royal-opera-house">
-                <img src="images/RoyalOperaHouse.jpg" alt="Royal Opera House">
-            </div>
-            <div class="polaroid-fan" id="st-pauls">
-                <img src="images/StPauls.jpg" alt="St Paul's Cathedral">
-            </div>
-            <div class="polaroid-fan" id="stratford">
-                <img src="images/Stratford-Upon-Avon.jpg" alt="Stratford-Upon-Avon">
-            </div>
-            <div class="polaroid-fan" id="the-globe">
-                <img src="images/TheGlobe.jpg" alt="The Globe Theatre">
+            <div class="logo-container">
+                <img src="images/Bard's Legacy Logo.png" alt="The Bard's Legacy Logo" class="logo-image">
             </div>
         </div>
-        <div class="logo-container">
-            <img src="images/Bard's Legacy Logo.png" alt="The Bard's Legacy Logo" class="logo-image">
-        </div>
-    </div>
 
-    <div class="text-container">
-        <div class="text-content left-content">
-            <h2>Shakespeare's London: A Literary Adventure</h2>
-            <p>Join us for an unforgettable educational journey to London in the summer of 2025. This unique trip offers students the opportunity to immerse themselves in the world of William Shakespeare and explore his profound impact on literature, drama, and music.</p>
-            <p>Walk in the footsteps of the Bard himself as we visit historical sites, attend performances, and engage in interactive workshops. From the reconstructed Globe Theatre to the bustling streets of modern London, students will gain a deep appreciation for Shakespeare's enduring legacy.</p>
-            <p>This trip is designed to bring Shakespeare's works to life, offering a perfect blend of academic enrichment and cultural exploration. Don't miss this chance to experience the magic of Shakespeare in the very city where his genius flourished!</p>
-        </div>
+        <div class="text-container">
+            <div class="text-content left-content">
+                <h2>Shakespeare's London: A Literary Adventure</h2>
+                <p>Join us for an unforgettable educational journey to London in the summer of 2025. This unique trip offers students the opportunity to immerse themselves in the world of William Shakespeare and explore his profound impact on literature, drama, and music.</p>
+                <p>Walk in the footsteps of the Bard himself as we visit historical sites, attend performances, and engage in interactive workshops. From the reconstructed Globe Theatre to the bustling streets of modern London, students will gain a deep appreciation for Shakespeare's enduring legacy.</p>
+                <p>This trip is designed to bring Shakespeare's works to life, offering a perfect blend of academic enrichment and cultural exploration. Don't miss this chance to experience the magic of Shakespeare in the very city where his genius flourished!</p>
+            </div>
 
-        <div class="text-content right-content">
-            <h2>Key Destinations</h2>
-            <ul>
-                <li>Shakespeare's Globe Theatre</li>
-                <li>Stratford-upon-Avon (Shakespeare's birthplace)</li>
-                <li>The Royal Shakespeare Company</li>
-                <li>The British Library (to view original manuscripts)</li>
-                <li>Westminster Abbey (Poets' Corner)</li>
-                <li>The National Theatre</li>
-                <li>The Victoria and Albert Museum</li>
-                <li>A West End performance of a Shakespeare play</li>
-            </ul>
+            <div class="text-content right-content">
+                <h2>Key Destinations</h2>
+                <ul>
+                    <li>Shakespeare's Globe Theatre</li>
+                    <li>Stratford-upon-Avon (Shakespeare's birthplace)</li>
+                    <li>The Royal Shakespeare Company</li>
+                    <li>The British Library (to view original manuscripts)</li>
+                    <li>Westminster Abbey (Poets' Corner)</li>
+                    <li>The National Theatre</li>
+                    <li>The Victoria and Albert Museum</li>
+                    <li>A West End performance of a Shakespeare play</li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 
 
-<script src="scripts/menu.js"></script>
+
     <script>
+  // Define the functions in the global scope
+  let menuOpen = false;
+    let openGroup = null;
+
+    function toggleMenu() {
+        const menuContent = document.getElementById('menuContent');
+        const menuToggle = document.querySelector('.menu-toggle');
+        menuOpen = !menuOpen;
+        
+        if (menuOpen) {
+            menuContent.classList.add('show');
+            menuToggle.classList.add('open');
+        } else {
+            menuContent.classList.remove('show');
+            menuToggle.classList.remove('open');
+            closeAllGroups();
+        }
+    }
+
+    function toggleGroup(groupId) {
+        const group = document.getElementById(groupId);
+        const groupTitle = group.previousElementSibling;
+
+        if (openGroup && openGroup !== group) {
+            openGroup.classList.remove('show');
+            openGroup.previousElementSibling.classList.remove('open');
+        }
+
+        group.classList.toggle('show');
+        groupTitle.classList.toggle('open');
+
+        openGroup = group.classList.contains('show') ? group : null;
+    }
+
+    function closeAllGroups() {
+        const groups = document.querySelectorAll('.group-items');
+        const groupTitles = document.querySelectorAll('.group-title');
+        
+        groups.forEach(group => group.classList.remove('show'));
+        groupTitles.forEach(title => title.classList.remove('open'));
+        
+        openGroup = null;
+    }
+
+    // Load the menu content
+    fetch('menu.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('menu').innerHTML = data;
+            
+            // Add event listener for clicks outside the menu
+            document.addEventListener('click', function(event) {
+                const menuContainer = document.querySelector('.menu-container');
+                if (!menuContainer.contains(event.target) && menuOpen) {
+                    toggleMenu();
+                }
+            });
+        })
+        .catch(error => console.error('Error loading the menu:', error));
+
     // Add Javascript here
     function createClouds() {
         const cloudContainer = document.createElement('div');
@@ -468,14 +523,6 @@
     // window.addEventListener('resize', animatePolaroids);
 
     window.addEventListener('load', createClouds);
-
-
-    fetch('menu.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('menu').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading menu:', error));
 </script>
 
 </body>
