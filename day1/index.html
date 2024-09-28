@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Bard's Legacy - Day 1</title>
+    <title>The Bard's Legacy - Day 2</title>
     <link rel="icon" href="../icons/Shakespeareicon.png">
     <style>
     @font-face {
@@ -88,8 +88,7 @@
     }
 
     .container {
-        max-width: 92vw;
-        margin: 0 auto;
+        max-width: 95vw;
     }
 
     .audio-container {
@@ -128,13 +127,15 @@
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 10px;
         padding: 10px;
-        max-width: 90vw;
         margin-left: 20px;
+        margin-right: 10px;
+        margin-bottom: 20px;
     }
 
     .grid-item {
         background-color: rgba(255, 255, 255, 0.1);
         padding: 20px;
+        max-height: 1000px;
         border-radius: 25px;
         overflow: hidden;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -158,6 +159,14 @@
         height: 100%;
         object-fit: cover; /* Crop the image to fill the space */
         display: block; /* Remove any space below the image */
+        max-height: 2000px;
+    }
+
+    .grid-image-landscape {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Crop the image to fill the space */
+        display: block; /* Remove any space below the image */
         max-height: 1000px;
     }
 
@@ -173,7 +182,7 @@
 
     .grid-item.landscape {
         grid-column: span 2;
-        aspect-ratio: 2 / 0;
+        aspect-ratio: 4 / 1.8;
         max-height: 1000px;
     }
 
@@ -204,8 +213,7 @@
 
     @media (max-width: 600px) {
     .grid-container {
-        margin-left:-10px;
-        padding: 5px; /* Reduce padding */
+        margin-left:15px;
     }
 
     .grid-item {
@@ -220,6 +228,10 @@
 
     .subtitle-card {
         font-size: 3vh; /* Smaller subtitle font size */
+    }
+
+    .container {
+        max-width: 88vw;
     }
 }
     </style>
