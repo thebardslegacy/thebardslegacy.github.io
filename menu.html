@@ -1,4 +1,3 @@
-<!-- menu.html -->
 <style>
     .menu-container {
         position: fixed;
@@ -45,7 +44,7 @@
         position: fixed;
         left: -250px;
         margin-top: 0px;
-        background: linear-gradient(135deg, rgba(0, 0, 0, 0.196), rgba(0, 0, 0, 0.309));
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.326), rgba(0, 0, 0, 0.637));
         width: 250px;
         height: 70vh;
         padding-top: 60px;
@@ -89,16 +88,15 @@
     }
 
     .group-items {
-        display: none;
-        padding-left: 20px;
         max-height: 0;
         overflow: hidden;
-        transition: all 0.3s ease;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding-left: 20px;
     }
 
     .group-items.show {
-        display: block;
-        max-height: 500px;
+        max-height: 500px; /* Adjust as needed */
+        padding-left: 20px; /* Maintain padding when visible */
     }
 
     .group-items a, .contact-link {
@@ -117,7 +115,7 @@
         text-align: center;
         color: white;
         margin-left: -15px;
-        margin-top:-35px;
+        margin-top: -35px;
         font-size: 18px;
         margin-bottom: 10px;
     }
@@ -166,7 +164,7 @@
                 <a href="https://thebardslegacy.github.io/day14">Day 14</a>
             </div>
         </div>
-        <a href="mailto:garrison.tubbs-biph@basischina.com" class="contact-link">Contact</a>
+        <a href="mailto:garrison.tubbs-biph@basischina.com,paige.cooksey-biph@basischina.com" class="contact-link">Contact</a>
         <div class="menu-footer">© Garrison Tubbs 2024</div>
     </div>
 </div>
@@ -179,7 +177,7 @@
         const menuContent = document.getElementById('menuContent');
         const menuToggle = document.querySelector('.menu-toggle');
         menuOpen = !menuOpen;
-        
+
         if (menuOpen) {
             menuContent.classList.add('show');
             menuToggle.classList.add('open');
@@ -208,10 +206,10 @@
     function closeAllGroups() {
         const groups = document.querySelectorAll('.group-items');
         const groupTitles = document.querySelectorAll('.group-title');
-        
+
         groups.forEach(group => group.classList.remove('show'));
         groupTitles.forEach(title => title.classList.remove('open'));
-        
+
         openGroup = null;
     }
 
@@ -221,6 +219,4 @@
             toggleMenu();
         }
     });
-
-    
 </script>
