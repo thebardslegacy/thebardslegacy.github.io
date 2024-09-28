@@ -87,15 +87,16 @@
 
 
         .container {
-            max-width: 90vw;
+            max-width: 92vw;
             margin: 0 auto;
         }
 
         .audio-container {
             background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            border-radius: 25px;
             padding: 20px;
             margin-bottom: 20px;
+            margin-left: 25px;
         }
 
         .audio-container h2 {
@@ -127,7 +128,7 @@
     gap: 10px;
     padding: 20px;
     max-width: 90vw;
-    margin: 0; /* Remove default margin */
+    margin-left: 25px;
 }
 
         .grid-item {
@@ -161,6 +162,7 @@
     height: 100%;
     object-fit: cover; /* Crop the image to fill the space */
     display: block; /* Remove any space below the image */
+    max-height: 1000px;
 }
 
         .grid-item:hover {
@@ -175,25 +177,35 @@
 
         .grid-item.landscape {
     grid-column: span 2;
-    aspect-ratio: 2 / 1;
+    aspect-ratio: 2 / 0;
+    max-height: 1000px;
 }
 
 .grid-item.portrait {
     grid-row: span 2;
-    aspect-ratio: 1 / 2;
+    aspect-ratio: 1 / 2.3;
+    max-height: 1000px;
 }
 
-@media (max-width: 768px) {
-    .grid-item.landscape {
-        grid-column: span 1;
-        aspect-ratio: 1;
-    }
-
-    .grid-item.portrait {
-        grid-row: span 1;
-        aspect-ratio: 1;
-    }
+.title-card {
+    font-family: 'Zapfino';
+    font-size: 2.5vh;
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-align: center; /* Center text within the container */
+    max-width: 90%; /* Prevents the container from being too wide */
 }
+
+.subtitle-card {
+    font-size: 2vh;
+    align-items: center; /* Center vertically */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    text-align: center; /* Center text within the container */
+    max-width: 90%; /* Prevents the container from being too wide */
+}
+
     </style>
 </head>
 <body>
@@ -212,36 +224,34 @@
     <h1 class="Subtitle"><p></p>Day 1</h1>
 
     <div class="grid-container">
-        <div class="grid-item"><b>Day 1: Arrival in London</b><p>Wheeee!</p></div>
-        <div class="grid-item landscape"><b>Welcome to London!</b></div>
+        <div class="grid-item "><b>Day 1: Arrival in London</b><p>Welcome to the start of your adventure!</p></div>
+        <div class="grid-item title-card"><b>Welcome to London!</b></div>
         <div class="grid-item-image portrait">
-            <img src="../images/airplane_landing.jpg" alt="Description of the image" class="grid-image">
+            <img src="../images/airplane_landing.jpg" alt="Airplane landing in London" class="grid-image">
         </div>
-        <div class="grid-item">After arriving in London, you'll make your way to your hotel to settle in.</div>
-        <div class="grid-item portrait"><b>Hotel Check-In</b><br>Take some time to relax and refresh after your journey.</div>
+        <div class="grid-item">Upon arrival, you will proceed to your designated hotel for check-in and to unwind from your journey.</div>
+        <div class="grid-item portrait"><b>Hotel Check-In</b><p>Take this time to relax and refresh in preparation for an exciting trip ahead. Our hotel is centrally located, providing easy access to some of London's most famous landmarks. Enjoy the amenities available, including complimentary Wi-Fi, a fitness center, and a cozy lounge area where you can gather with fellow travelers.</div>
         <div class="grid-item-image portrait">
-            <img src="../images/big_ben.jpg" alt="Description of the image" class="grid-image">
+            <img src="../images/big_ben.jpg" alt="Big Ben in London" class="grid-image">
         </div>
-        <div class="grid-item"><b>Welcome Dinner</b></div>
-        <div class="grid-item landscape">Join us for a welcome dinner where you'll meet your fellow travelers.</div>
-        <div class="grid-item"><b>Information Meeting</b></div>
+        <div class="grid-item subtitle-card"><b>Welcome Dinner</b></div>
+        <div class="grid-item landscape">Join us for an elegant welcome dinner where you'll have the opportunity to meet your fellow travelers and enjoy a gourmet meal featuring traditional British cuisine with a modern twist. This is a perfect time to bond and share your travel experiences.</div>
+        <div class="grid-item subtitle-card"><b>Information Meeting</b></div>
         <div class="grid-item-image portrait">
-            <img src="../images/Shakespeare.jpg" alt="Description of the image" class="grid-image">
+            <img src="../images/Shakespeare.jpg" alt="Shakespearean theater" class="grid-image">
         </div>
-        <div class="grid-item">During the dinner, our guide will provide an overview of the itinerary and answer any questions.</div>
-        <div class="grid-item portrait"><b>Sights You Might See</b><br>- The iconic <b>Big Ben</b> and the <b>Houses of Parliament</b><br>- A stroll along the <b>Thames River</b></div>
-        <div class="grid-item"><b>Evening Options</b></div>
+        <div class="grid-item portrait">During dinner, our experienced guide will present the itinerary and address any questions you may have about the upcoming days. You will receive a detailed schedule, including timings for tours, meals, and free time, ensuring you maximize every moment of your visit.</div>
+        <div class="grid-item portrait"><b>Sights You Might See</b><p>The iconic Big Ben and the Houses of Parliament stand as symbols of London’s rich history and political significance. Don’t forget to capture photos of these stunning architectural masterpieces.</div>
         <div class="grid-item-image portrait">
-            <img src="../images/flags_on_street.jpg" alt="Description of the image" class="grid-image">
+            <img src="../images/flags_on_street.jpg" alt="Flags along a street in London" class="grid-image">
         </div>
-        <div class="grid-item landscape">Explore the nearby neighborhoods or relax at the hotel.</div>
-        <div class="grid-item">We hope you’re excited for the adventure ahead!</div>
+        <div class="grid-item landscape">Feel free to explore the charming nearby neighborhoods or enjoy a quiet evening at the hotel. Consider visiting a local pub or taking a leisurely walk down the historic streets to soak in the atmosphere of London at night.</div>
+        <div class="grid-item">We hope you’re as excited as we are for the adventure ahead!</div>
         <div class="grid-item-image portrait">
-            <img src="../images/London_Map.gif" alt="Description of the image" class="grid-image">
+            <img src="../images/London_Map.gif" alt="Map of London" class="grid-image">
         </div>
-        <div class="grid-item"><b>Get Ready!</b><br>Tomorrow, we’ll dive into more of what London has to offer.</div>
+        <div class="grid-item landscape"><b>Get Ready!</b><p>Tomorrow promises a day filled with exploration and unforgettable experiences in London. Be sure to get a good night's sleep so you can fully enjoy the sights and sounds of this incredible city!</div>
     </div>
-
     
         
     <div class="container">
@@ -249,16 +259,13 @@
             <h2>Edward Elgar - Enigma Variations, Op.36: IX. (Nimrod)</h2>
             <p>Today's tour will utilize the following audio as a part of our lessons and tour:</p>
             <audio id="audioPlayer" class="audio-player" controls>
-                <source src="mp3s/Edward Elgar Enigma Variations Op36 IX Nimrod.mp3" type="audio/mpeg">
+                <source src="../mp3s/Edward Elgar Enigma Variations Op36 IX Nimrod.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
             <br>
-            <a href="mp3s/Edward Elgar Enigma Variations Op36 IX Nimrod.mp3" download class="download-btn">Download MP3</a>
+            <a href="../mp3s/Edward Elgar Enigma Variations Op36 IX Nimrod.mp3" download class="download-btn">Download MP3</a>
         </div>
 
-
-        
-        <!-- <script src="../scripts/menu.js"></script> -->
 
     <script>
   // Define the functions in the global scope
