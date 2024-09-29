@@ -221,9 +221,9 @@ body {
 .nav-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
-    margin-left: 22px;
-    margin-right: -5px;
+    margin-top: 5px;
+    margin-left: 0%;
+    margin-right: 0%;
 }
 
 .nav-button {
