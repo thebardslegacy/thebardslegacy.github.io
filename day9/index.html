@@ -3,197 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Bard's Legacy - Day 1</title>
+    <title>The Bard's Legacy - Day 9</title>
     <link rel="icon" href="../icons/Shakespeareicon.png">
     <style>
-        @font-face {
-            font-family: 'Zapfino';
-            src: url('../fonts/Zapfino.ttf') format('truetype');
+    @font-face {
+        font-family: 'Zapfino';
+        src: url('../fonts/Zapfino.ttf') format('truetype');
+    }
+
+    body {
+        background-color: rgb(45, 70, 119);
+        font-family: 'Andika', sans-serif;
+        color: #ffffff;
+        margin: 0;
+        padding: 20px;
+        line-height: 1.6;
+    }
+
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgb(107, 140, 206), rgb(51, 108, 156));
+        opacity: 0.8;
+        z-index: -2;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 30% 70%, #a1abca 0%, transparent 50%),
+                    radial-gradient(circle at 70% 30%, #dfe2c5 0%, transparent 50%);
+        mix-blend-mode: overlay;
+        opacity: 0.5;
+        z-index: -1;
+        animation: pulse 1.5s infinite alternate;
+    }
+
+    .overlay2 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 70% 70%, #ffffff 0%, transparent 50%),
+                    radial-gradient(circle at 30% 30%, #b8b8b8 0%, transparent 50%);
+        mix-blend-mode: overlay;
+        opacity: 0.5;
+        z-index: -1;
+        animation: pulse 2s infinite alternate;
+    }
+
+    @keyframes pulse {
+        0% {
+            opacity: 0.3;
+            transform: scale(1);
         }
-        
-        body {
-            background-color: rgb(45, 70, 119);
-            font-family: 'Andika', sans-serif;
-            /* font-family: 'Helvetica Neue', Arial, sans-serif; */
-            color: #ffffff;
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
+        100% {
+            opacity: 0.7;
+            transform: scale(1.1);
         }
+    }
 
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgb(107, 140, 206), rgb(51, 108, 156));
-            opacity: 0.8;
-            z-index: -2;
-        }
+    .Title {
+        font-size: 2.5rem;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 70%, #a1abca 0%, transparent 50%),
-                        radial-gradient(circle at 70% 30%, #dfe2c5 0%, transparent 50%);
-            mix-blend-mode: overlay;
-            opacity: 0.5;
-            z-index: -1;
-            animation: pulse 1.5s infinite alternate;
-        }
-        .overlay2 {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 70% 70%, #ffffff 0%, transparent 50%),
-                        radial-gradient(circle at 30% 30%, #b8b8b8 0%, transparent 50%);
-            mix-blend-mode: overlay;
-            opacity: 0.5;
-            z-index: -1;
-            animation: pulse 2s infinite alternate;
-        }
-        @keyframes pulse {
-            0% {
-                opacity: 0.3;
-                transform: scale(1); 
-            }
-            100% {
-                opacity: 0.7;
-                transform: scale(1.1);
-            }
-        }
+    .Subtitle {
+        font-family: 'Zapfino', sans-serif;
+        color: white;
+        margin-top: -0.7em;
+        font-size: 40px;
+        text-align: center;
+    }
 
-        .Title {
-            font-size: 2.5rem;
-            font-weight: 300;
-            text-align: center;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
+    .container {
+        max-width: 95vw;
+    }
 
-        .Subtitle {
-            font-family: 'Zapfino', sans-serif;
-            color: white;
-            margin-top: -0.7em;
-            font-size: 40px;
-            text-align: center;
-        }
+    .audio-container {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 25px;
+        padding: 20px;
+        margin-bottom: 20px;
+        margin-left: 25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
+    .audio-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 50px rgba(255, 255, 255, 0.1);
+    }
 
-        .container {
-            max-width: 90vw;
-            margin: 0 auto;
-        }
+    .audio-container h2 {
+        margin-top: 0;
+    }
 
-        .audio-container {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
+    .audio-player {
+        width: 100%;
+        margin-top: 10px;
+    }
 
-        .audio-container h2 {
-            margin-top: 0;
-        }
+    .download-btn {
+        display: inline-block;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
 
-        .audio-player {
-            width: 100%;
-            margin-top: 10px;
-        }
+    .download-btn:hover {
+        background-color: #45a049;
+    }
 
-        .download-btn {
-            display: inline-block;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        padding: 10px;
+        margin-left: 20px;
+        margin-right: 10px;
+        margin-bottom: 20px;
+    }
 
-        .download-btn:hover {
-            background-color: #45a049;
-        }
-
-        .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-    padding: 20px;
-    max-width: 90vw;
-    margin: 0; /* Remove default margin */
-}
-
-        .grid-item {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            aspect-ratio: 1;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-
-        .grid-item-image {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 0; /* Remove padding to allow the image to extend to the edges */
-            border-radius: 25px;
-            overflow: hidden;
-            border: 3px solid rgb(255, 255, 255); /* Thin white border */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            aspect-ratio: 1;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-
-
-        .grid-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Crop the image to fill the space */
-    display: block; /* Remove any space below the image */
-}
-
-        .grid-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 50px rgba(255, 255, 255, 0.1);
-        }
-
-        .grid-item-image:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 50px rgba(255, 255, 255, 0.1);
-        }
-
-        .grid-item.landscape {
-    grid-column: span 2;
-    aspect-ratio: 2 / 1;
-}
-
-.grid-item.portrait {
-    grid-row: span 2;
-    aspect-ratio: 1 / 2;
-}
-
-@media (max-width: 768px) {
-    .grid-item.landscape {
-        grid-column: span 1;
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        max-height: 1000px;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         aspect-ratio: 1;
+    }
+
+    .grid-item-image {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 0;
+        border-radius: 25px;
+        overflow: hidden;
+        border: 3px solid rgb(255, 255, 255);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        aspect-ratio: 1;
+    }
+
+    .grid-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        max-height: 2000px;
+    }
+
+    .grid-image-landscape {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        max-height: 1000px;
+    }
+
+    .grid-item:hover, .grid-item-image:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 50px rgba(255, 255, 255, 0.1);
+    }
+
+    .grid-item.landscape {
+        grid-column: span 2;
+        aspect-ratio: 4 / 1.8;
+        max-height: 1000px;
     }
 
     .grid-item.portrait {
-        grid-row: span 1;
-        aspect-ratio: 1;
+        grid-row: span 2;
+        aspect-ratio: 1 / 2.3;
+        max-height: 1000px;
     }
-}
+
+    .title-card {
+        font-family: 'Zapfino';
+        font-size: 2.5vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        max-width: 90%;
+    }
+
+    .subtitle-card {
+        font-size: 2vh;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        max-width: 90%;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        margin-left: 22px;
+        margin-right: 22px;
+    }
+
+    .nav-button {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 50px rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 600px) {
+        .grid-container {
+            margin-left:15px;
+        }
+
+        .grid-item {
+            min-height: 180px;
+            min-width: 180px;
+            padding: 10px;
+        }
+
+        .title-card {
+            font-size: 2.5vh;
+        }
+
+        .subtitle-card {
+            font-size: 3vh;
+        }
+
+        .container {
+            max-width: 88vw;
+        }
+    }
     </style>
 </head>
 <body>
@@ -209,56 +275,39 @@
     
 
     <h1 class="Title">The Bard's Legacy</h1>
-    <h1 class="Subtitle"><p></p>Day 1</h1>
-
-    <div class="grid-container">
-        <div class="grid-item"><b>Day 1: Arrival in London</b><p>Wheeee!</p></div>
-        <div class="grid-item landscape"><b>Welcome to London!</b></div>
-        <div class="grid-item-image portrait">
-            <img src="../images/airplane_landing.jpg" alt="Description of the image" class="grid-image">
-        </div>
-        <div class="grid-item">After arriving in London, you'll make your way to your hotel to settle in.</div>
-        <div class="grid-item portrait"><b>Hotel Check-In</b><br>Take some time to relax and refresh after your journey.</div>
-        <div class="grid-item-image portrait">
-            <img src="../images/big_ben.jpg" alt="Description of the image" class="grid-image">
-        </div>
-        <div class="grid-item"><b>Welcome Dinner</b></div>
-        <div class="grid-item landscape">Join us for a welcome dinner where you'll meet your fellow travelers.</div>
-        <div class="grid-item"><b>Information Meeting</b></div>
-        <div class="grid-item-image portrait">
-            <img src="../images/Shakespeare.jpg" alt="Description of the image" class="grid-image">
-        </div>
-        <div class="grid-item">During the dinner, our guide will provide an overview of the itinerary and answer any questions.</div>
-        <div class="grid-item portrait"><b>Sights You Might See</b><br>- The iconic <b>Big Ben</b> and the <b>Houses of Parliament</b><br>- A stroll along the <b>Thames River</b></div>
-        <div class="grid-item"><b>Evening Options</b></div>
-        <div class="grid-item-image portrait">
-            <img src="../images/flags_on_street.jpg" alt="Description of the image" class="grid-image">
-        </div>
-        <div class="grid-item landscape">Explore the nearby neighborhoods or relax at the hotel.</div>
-        <div class="grid-item">We hope you’re excited for the adventure ahead!</div>
-        <div class="grid-item-image portrait">
-            <img src="../images/London_Map.gif" alt="Description of the image" class="grid-image">
-        </div>
-        <div class="grid-item"><b>Get Ready!</b><br>Tomorrow, we’ll dive into more of what London has to offer.</div>
-    </div>
-
+    <h1 class="Subtitle"><p></p>Day 9</h1>
     
-        
+    <div class="grid-container">
+        <div class="grid-item landscape"><b>Day 9: Stratford-Upon-Avon Tour</b><p>Take a bus from London to Stratford-Upon-Avon for a guided tour of Shakespeare's birthplace and other local attractions (2 hours).</p></div>
+        <div class="grid-item">Explore the charming town of Stratford-Upon-Avon, visiting sites like Anne Hathaway's Cottage and the Royal Shakespeare Theatre.</div>
+        <div class="grid-item"><b>Local Guides</b><p>Engage with local guides who will share insights into Shakespeare's life and the history of the town.</p></div>
+        <div class="grid-item-image portrait">
+            <img src="../images/StratfordUponAvon.jpg" alt="Stratford-Upon-Avon" class="grid-image-landscape">
+        </div>
+        <div class="grid-item title-card"><b>Stratford Upon Avon</b></div>
+        <div class="grid-item-image portrait">
+            <img src="../images/ShakespeareBirthplace.jpg" alt="Shakespeare's Birthplace" class="grid-image-landscape">
+        </div>
+        <div class="grid-item landscape">Return to London by bus and go directly back to the hotel.</div>
+    </div>
+    
     <div class="container">
         <div class="audio-container">
             <h2>Edward Elgar - Enigma Variations, Op.36: IX. (Nimrod)</h2>
             <p>Today's tour will utilize the following audio as a part of our lessons and tour:</p>
             <audio id="audioPlayer" class="audio-player" controls>
-                <source src="mp3s/Edward Elgar Enigma Variations Op36 IX Nimrod.mp3" type="audio/mpeg">
+                <source src="../mp3s/Edward Elgar Enigma Variations Op36 IX Nimrod.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
             <br>
-            <a href="mp3s/Edward Elgar Enigma Variations Op36 IX Nimrod.mp3" download class="download-btn">Download MP3</a>
+            <a href="../mp3s/Edward Elgar Enigma Variations Op36 IX Nimrod.mp3" download class="download-btn">Download MP3</a>
         </div>
-
-
-        
-        <!-- <script src="../scripts/menu.js"></script> -->
+    </div>
+    
+    <div class="nav-buttons">
+        <button class="nav-button" onclick="location.href='https://thebardslegacy.github.io/day8/'">← Day 8</button>
+        <button class="nav-button" onclick="location.href='https://thebardslegacy.github.io/day10/'">Day 10 →</button>
+    </div>
 
     <script>
   // Define the functions in the global scope
