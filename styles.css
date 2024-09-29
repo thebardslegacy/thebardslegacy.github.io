@@ -78,56 +78,17 @@ body {
     text-align: center;
 }
 
-.container {
-    max-width: 95vw;
-}
 
-.audio-container {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
-    padding: 20px;
-    margin-bottom: 20px;
-    margin-left: 25px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.audio-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 50px rgba(255, 255, 255, 0.1);
-}
 
-.audio-container h2 {
-    margin-top: 0;
-}
-
-.audio-player {
-    width: 100%;
-    margin-top: 10px;
-}
-
-.download-btn {
-    display: inline-block;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.download-btn:hover {
-    background-color: #45a049;
-}
 
 .grid-container {
     display: grid;
+    max-width: 85vw;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;
     padding: 10px;
-    margin-left: 20px;
-    margin-right: 10px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px; /* Center the grid */
 }
 
 .grid-item {
@@ -204,6 +165,59 @@ body {
     max-width: 90%;
 }
 
+
+
+
+
+
+.container {
+    display: grid;
+    max-width: 85vw; /* Match the grid's max-width */
+    margin: 0 auto 20px; /* Center the container */
+}
+
+.audio-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.audio-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 50px rgba(255, 255, 255, 0.1);
+}
+
+.audio-container h2 {
+    margin-top: 0;
+}
+
+.audio-player {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.download-btn {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.download-btn:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
 .nav-buttons {
     display: flex;
     justify-content: space-between;
@@ -234,6 +248,13 @@ body {
     color: #fefefe00;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
 }
+
+
+
+
+
+
+
 
 @media (max-width: 500px) {
     .grid-container {
